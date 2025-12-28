@@ -10,10 +10,10 @@ const initialState = {
 }
 
 //Async Thunk => Async thunk help us to perform asynchrounus actions
-
+const ApiUrl = "https://backendforecommerce-production.up.railway.app";
 export const RegisterUser = createAsyncThunk('Auth/register',
     async (formData) => {
-        const responseRegister = await axios.post('http://localhost:5000/api/auth/register', formData, {
+            const responseRegister = await axios.post(`${ApiUrl}/api/auth/register`, formData, {
             withCredentials: true
         })
         return responseRegister.data;
@@ -21,7 +21,7 @@ export const RegisterUser = createAsyncThunk('Auth/register',
 )
 export const CheckUser = createAsyncThunk('Auth/user',
     async () => {
-        const responseUser = await axios.get('http://localhost:5000/api/auth/checkUser', {
+        const responseUser = await axios.get(`${ApiUrl}/api/auth/checkUser`, {
             withCredentials: true,
             headers: {
                 "Cache-Control": "no-store no-cache must-revalidate proxy-revalidate",
@@ -33,7 +33,7 @@ export const CheckUser = createAsyncThunk('Auth/user',
 )
 export const LoginUser = createAsyncThunk('Auth/Login',
     async (formData) => {
-        const responseLogin = await axios.post('http://localhost:5000/api/auth/login', formData, {
+        const responseLogin = await axios.post(`${ApiUrl}/api/auth/login`, formData, {
             withCredentials: true
         })
         return responseLogin.data;
@@ -42,7 +42,7 @@ export const LoginUser = createAsyncThunk('Auth/Login',
 
 export const LogoutUser = createAsyncThunk('auth/logout',
     async () => {
-        const response = await axios.post("http://localhost:5000/api/auth/logout", {}, {
+        const response = await axios.post(`${ApiUrl}/api/auth/logout`, {}, {
             withCredentials: true
         })
         return response.data;
@@ -52,7 +52,7 @@ export const LogoutUser = createAsyncThunk('auth/logout',
 export const OtpVerify = createAsyncThunk(
     "auth/OtpVerify",
     async(otpData) => {
-        const response = await axios.post("http://localhost:5000/api/auth/otp-verify", otpData, {
+        const response = await axios.post(`${ApiUrl}/api/auth/otp-verify`, otpData, {
             withCredentials: true
         })
         return response.data;
@@ -61,7 +61,7 @@ export const OtpVerify = createAsyncThunk(
 export const OtpResend = createAsyncThunk(
     "auth/OtpResend",
     async(email) => {
-        const response = await axios.post("http://localhost:5000/api/auth/otp-regnerate", email, {
+        const response = await axios.post(`${ApiUrl}/api/auth/otp-regnerate`, email, {
             withCredentials: true
         })
         return response.data;
@@ -71,7 +71,7 @@ export const OtpResend = createAsyncThunk(
 export const FindUser = createAsyncThunk(
     "auth/FindUser",
     async(email) => {
-        const response = await axios.post("http://localhost:5000/api/auth/find", email, {
+        const response = await axios.post(`${ApiUrl}/api/auth/find`, email, {
             withCredentials: true
         })
 
@@ -82,7 +82,7 @@ export const FindUser = createAsyncThunk(
 export const ForgetPassword = createAsyncThunk(
     "auth.forgetPassword",
     async(Data) => {
-        const response = await axios.post("http://localhost:5000/api/auth/forget", Data, {
+        const response = await axios.post(`${ApiUrl}/api/auth/forget`, Data, {
             withCredentials: true
         })
         return response.data;

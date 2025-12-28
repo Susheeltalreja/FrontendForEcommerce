@@ -5,11 +5,11 @@ const initialState = {
     isLoading: false,
     productList: []
 }
-
+const ApiUrl = "https://backendforecommerce-production.up.railway.app";
 export const AddProduct = createAsyncThunk(
     "admin/AddProduct",
     async (formData) => {
-        const response = await axios.post("http://localhost:5000/products/addProduct",
+        const response = await axios.post(`${ApiUrl}/products/addProduct`,
             formData
         )
         return response?.data;
@@ -19,7 +19,7 @@ export const AddProduct = createAsyncThunk(
 export const FetchProducts = createAsyncThunk(
     "admin/FetchProducts",
     async () => {
-        const response = await axios.get("http://localhost:5000/products/fetch");
+        const response = await axios.get(`${ApiUrl}/products/fetch`);
         return response?.data;
     }
 )
@@ -27,7 +27,7 @@ export const FetchProducts = createAsyncThunk(
 export const UpdateProducts = createAsyncThunk(
     "admin/UpdateProducts",
     async ({ id, formData }) => {
-        const response = await axios.put(`http://localhost:5000/products/fetch/${id}`, formData);
+        const response = await axios.put(`${ApiUrl}/products/fetch/${id}`, formData);
         return response?.data;
     }
 )
@@ -35,7 +35,7 @@ export const UpdateProducts = createAsyncThunk(
 export const DeleteProduct = createAsyncThunk(
     "admin/DeleteProduct",
     async (id) => {
-        const response = await axios.delete(`http://localhost:5000/products/fetch/${id}`);
+        const response = await axios.delete(`${ApiUrl}/products/fetch/${id}`);
         return response?.data;
     }
 )

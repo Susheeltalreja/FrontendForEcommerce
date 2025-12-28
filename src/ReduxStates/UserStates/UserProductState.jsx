@@ -7,7 +7,7 @@ const initialState = {
     productList: [],
     ProductDetails: null
 }
-
+const ApiUrl = "https://backendforecommerce-production.up.railway.app";
 export const FetchAllProductsForUser = createAsyncThunk(
     "/user/FetchAllProductsForUser",
     async({filter, sort}) => {
@@ -15,14 +15,14 @@ export const FetchAllProductsForUser = createAsyncThunk(
             ...filter,
             sortBy: sort
         })
-        const result = await axios.get(`http://localhost:5000/user/products/get?${query}`);
+        const result = await axios.get(`${ApiUrl}/user/products/get?${query}`);
         return result?.data;
     }
 )
 export const FindProductDetails = createAsyncThunk(
     "/user/FindProductDetails",
     async(id) => {
-        const result = await axios.get(`http://localhost:5000/user/products/get/${id}`);
+        const result = await axios.get(`${ApiUrl}/user/products/get/${id}`);
         return result?.data;
     }
 )

@@ -5,18 +5,18 @@ const initialState = {
     isLoading: false,
     completeOrderInfo : []
 }
-
+const ApiUrl = "https://backendforecommerce-production.up.railway.app";
 export const GetCompletInformation = createAsyncThunk(
     "/admin/GetCompletInformation",
     async() => {
-        const result = await axios.get("http://localhost:5000/user/checkout/get");
+        const result = await axios.get(`${ApiUrl}/user/checkout/get`);
         return result?.data;
     }
 )
 export const UpdateStatusOfOrders = createAsyncThunk(
     "/admin/UpdateStatusOfOrders",
     async(Statusdata) => {
-        const response = await axios.put("http://localhost:5000/user/checkout/update", Statusdata);
+        const response = await axios.put(`${ApiUrl}/user/checkout/update`, Statusdata);
         return response?.data
     }
 )

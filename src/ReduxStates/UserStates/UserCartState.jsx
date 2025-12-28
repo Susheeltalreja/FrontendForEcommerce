@@ -5,11 +5,11 @@ const initialState = {
     isLoading: false,
     CartItems: []
 }
-
+const ApiUrl = "https://backendforecommerce-production.up.railway.app";
 export const AddItemsInCart = createAsyncThunk(
     "/user/AddItemsInCart",
     async(cartData) => {
-        const response = await axios.post("http://localhost:5000/user/cart/add", cartData)
+        const response = await axios.post(`${ApiUrl}/user/cart/add`, cartData)
         return response?.data
     }
 )
@@ -17,7 +17,7 @@ export const AddItemsInCart = createAsyncThunk(
 export const FetchProductForCart = createAsyncThunk(
     "user/FetchProductForCart",
     async(id) => {
-        const response = await axios.get(`http://localhost:5000/user/cart/fetch/${id}`)
+        const response = await axios.get(`${ApiUrl}/user/cart/fetch/${id}`)
         return response?.data
     }
 )
@@ -25,7 +25,7 @@ export const FetchProductForCart = createAsyncThunk(
 export const UpdateItemsInCart = createAsyncThunk(
     "/user/UpdateItemsInCart",
     async(cartData) => {
-        const response = await axios.put("http://localhost:5000/user/cart/put", cartData)
+        const response = await axios.put(`${ApiUrl}/user/cart/put`, cartData)
         return response?.data
     }
 )
