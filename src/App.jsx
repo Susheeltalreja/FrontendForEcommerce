@@ -74,7 +74,7 @@ function App() {
           <UserLayout />
         </RouteAuth>}>
           <Route path='home' element={<UserHome />}></Route>
-          <Route path='productslist' element={<UserProducts />}></Route>
+          <Route path='productsList' element={<UserProducts />}></Route>
           <Route path='checkout' element={<UserCheckout />}></Route>
           <Route path='accounts' element={<UserAccounts />}></Route>
         </Route>
